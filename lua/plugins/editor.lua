@@ -50,22 +50,9 @@ return {
   {
     "telescope.nvim",
     dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
       "nvim-telescope/telescope-file-browser.nvim",
     },
     keys = {
-      {
-        "<leader>fP",
-        function()
-          require("telescope.builtin").find_files({
-            cwd = require("lazy.core.config").options.root,
-          })
-        end,
-        desc = "Find Plugin File",
-      },
       {
         ";f",
         function()
@@ -80,9 +67,10 @@ return {
       {
         ";F",
         function()
+          require("telescope").load_extension("flutter")
           require("telescope").extensions.flutter.commands()
         end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+        desc = "Open Flutter Commands",
       },
       {
         ";r",
@@ -219,7 +207,6 @@ return {
         },
       }
       telescope.setup(opts)
-      require("telescope").load_extension("fzf")
       require("telescope").load_extension("file_browser")
     end,
   },
