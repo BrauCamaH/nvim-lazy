@@ -65,14 +65,6 @@ return {
         desc = "Lists files in your current working directory, respects .gitignore",
       },
       {
-        ";F",
-        function()
-          require("telescope").load_extension("flutter")
-          require("telescope").extensions.flutter.commands()
-        end,
-        desc = "Open Flutter Commands",
-      },
-      {
         ";r",
         function()
           local builtin = require("telescope.builtin")
@@ -121,13 +113,6 @@ return {
           builtin.treesitter()
         end,
         desc = "Lists Function names, variables, from Treesitter",
-      },
-      {
-        ";F",
-        function()
-          require("telescope").load_extension("flutter")
-        end,
-        desc = "Flutter Tools",
       },
       {
         ";f",
