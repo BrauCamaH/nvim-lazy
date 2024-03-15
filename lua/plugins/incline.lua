@@ -57,8 +57,8 @@ return {
           return {
             { get_diagnostic_label() },
             { get_git_diff() },
-            { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
-            { filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { guibg = "none" },
+            { "" .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
             { "┊  " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
           }
         end,
