@@ -24,6 +24,10 @@ return {
       "<leader>a",
       function()
         require("harpoon"):list():append()
+        require("notify").notify("File appended to harpoon ", "info", {
+          icon = "🤠",
+          timeout = 100,
+        })
       end,
       desc = "harpoon file",
     },
