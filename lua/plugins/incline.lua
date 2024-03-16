@@ -1,10 +1,8 @@
 return {
-
   {
 
     "b0o/incline.nvim",
     config = function()
-      local devicons = require("nvim-web-devicons")
       local colors = {
         blue = "#004c4c",
         cyan = "#79dac8",
@@ -21,7 +19,7 @@ return {
         },
         render = function(props)
           local function get_git_diff()
-            local icons = { removed = "⛔", changed = "🟡", added = "➕" }
+            local icons = { removed = "⛔ ", changed = "🟡 ", added = "➕ " }
             local signs = vim.b[props.buf].gitsigns_status_dict
             local labels = {}
             if signs == nil then
@@ -39,7 +37,7 @@ return {
           end
 
           local function get_diagnostic_label()
-            local icons = { error = "", warn = " ", info = " ", hint = "✨" }
+            local icons = { error = " ", warn = " ", info = " ", hint = "✨" }
             local label = {}
 
             for severity, icon in pairs(icons) do
@@ -53,13 +51,12 @@ return {
             end
             return label
           end
-
           return {
             { get_diagnostic_label() },
             { get_git_diff() },
             { guibg = "none" },
-            { "" .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
-            { "┊  " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
+            { gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { " " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
           }
         end,
       })
