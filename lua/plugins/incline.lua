@@ -10,6 +10,7 @@ return {
         black = "#080808",
         grey = "#303030",
       }
+      local devicons = require("nvim-web-devicons")
       require("incline").setup({
         highlight = {
           groups = {
@@ -18,23 +19,11 @@ return {
           },
         },
         render = function(props)
-          local function get_git_diff()
-            local icons = { removed = "⛔ ", changed = "🟡 ", added = "➕ " }
-            local signs = vim.b[props.buf].gitsigns_status_dict
-            local labels = {}
-            if signs == nil then
-              return labels
-            end
-            for name, icon in pairs(icons) do
-              if tonumber(signs[name]) and signs[name] > 0 then
-                table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
-              end
-            end
-            if #labels > 0 then
-              table.insert(labels, { "┊ " })
-            end
-            return labels
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          if filename == "" then
+            filename = "[No Name]"
           end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
 
           local function get_diagnostic_label()
             local icons = { error = " ", warn = " ", info = " ", hint = "✨" }
@@ -53,10 +42,8 @@ return {
           end
           return {
             { get_diagnostic_label() },
-            { get_git_diff() },
-            { guibg = "none" },
-            { gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
-            { " " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
+            { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
+            { filename .. " ", guifg = colors.white, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
           }
         end,
       })
