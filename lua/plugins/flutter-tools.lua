@@ -19,8 +19,12 @@ return {
       },
     },
     config = function()
-      require("flutter-tools").setup({})
-      require("telescope").load_extension("flutter")
+      require("flutter-tools").setup({
+        dev_log = {
+          enabled = false,
+          open_cmd = "tabedit",
+        },
+      })
     end,
   },
 }

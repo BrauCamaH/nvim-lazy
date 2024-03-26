@@ -24,6 +24,7 @@ return {
       "<leader>a",
       function()
         require("harpoon"):list():append()
+        ---@diagnostic disable-next-line: missing-fields
         require("notify").notify("File appended", "info", {
           icon = "🤠",
           title = "Harpoon",
