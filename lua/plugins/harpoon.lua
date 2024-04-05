@@ -28,7 +28,7 @@ return {
         require("notify").notify("File appended", "info", {
           icon = "🤠",
           title = "Harpoon",
-          timeout = 100,
+          timeout = 1500,
         })
       end,
       desc = "harpoon file",
