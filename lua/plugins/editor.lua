@@ -1,5 +1,22 @@
 return {
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    keys = {
+      {
+        "<leader>cp",
+        desc = "Preview Markdown in Browser",
+        function()
+          vim.cmd("MarkdownPreviewToggle")
+        end,
+      },
+    },
+  },
+  {
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
