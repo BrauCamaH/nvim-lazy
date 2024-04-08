@@ -23,7 +23,7 @@ return {
     {
       "<leader>a",
       function()
-        require("harpoon"):list():append()
+        require("harpoon"):list():add()
         ---@diagnostic disable-next-line: missing-fields
         require("notify").notify("File appended", "info", {
           icon = "🤠",
