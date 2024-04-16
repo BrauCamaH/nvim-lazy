@@ -23,7 +23,13 @@ I used for Javascript/Typescript, Ruby, Go and Flutter development.
 - A [Codeium Account](https://codeium.com/) (optional), I use it as autocompletion support.
 - [Nodejs(LTS)](https://nodejs.org/en) for Javascript/Typescript development.
 - [Flutter Tools](https://docs.flutter.dev/get-started/install) for Mobile development.
+
 - [Go](https://go.dev/),[Ruby](https://www.ruby-lang.org/es/).
+
+### Telescope
+
+- [Chafa](https://hpjansson.org/chafa/) (required for image support)
+- [ImageMagick](https://imagemagick.org/index.php) (optional, for svg previews)
 - [Ripgrep](https://github.com/BurntSushi/ripgrep) for telescope.
 
 ## 🚀 Getting Started

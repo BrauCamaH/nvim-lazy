@@ -83,9 +83,12 @@ return {
   },
 
   {
-    "telescope.nvim",
+    "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
+      "nvim-lua/popup.nvim",
+      "nvim-lua/plenary.nvim",
     },
     keys = {
       {
@@ -150,7 +153,7 @@ return {
         desc = "Lists Function names, variables, from Treesitter",
       },
       {
-        ";f",
+        "<leader>slf",
         function()
           local telescope = require("telescope")
 
@@ -171,6 +174,19 @@ return {
         end,
         desc = "Open File Browser with the path of the current buffer",
       },
+      {
+        "<leader>slm",
+        function()
+          require("telescope").extensions.media_files.media_files({
+            path = "%:p:h",
+            respect_gitignore = false,
+            hidden = true,
+            grouped = true,
+            initial_mode = "insert",
+          })
+        end,
+        desc = "Show media files",
+      },
     },
     config = function(_, opts)
       local telescope = require("telescope")
@@ -186,6 +202,7 @@ return {
         mappings = {
           n = {},
         },
+        e,
       })
       opts.pickers = {
         diagnostics = {
@@ -197,6 +214,13 @@ return {
         },
       }
       opts.extensions = {
+        media_files = {
+          -- filetypes whitelist
+          -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+          filetypes = { "png", "webp", "jpg", "jpeg", "svg" },
+          -- find command (defaults to `fd`)
+          find_cmd = "rg",
+        },
         file_browser = {
           theme = "dropdown",
           -- disables netrw and use telescope-file-browser in its place
@@ -228,6 +252,7 @@ return {
       }
       telescope.setup(opts)
       require("telescope").load_extension("file_browser")
+      require("telescope").load_extension("media_files")
     end,
   },
   -- Incremental rename
