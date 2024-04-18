@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { "hiphish/rainbow-delimiters.nvim" },
     opts = {
       ensure_installed = {
         "astro",
@@ -13,9 +14,14 @@ return {
         "graphql",
         "http",
         "java",
+        "html",
+        "typescript",
+        "tsx",
         "php",
         "rust",
         "scss",
+        "ruby",
+        "lua",
         "sql",
         "svelte",
       },
