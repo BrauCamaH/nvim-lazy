@@ -103,12 +103,17 @@ return {
           { name = "codeium" },
         },
         window = {
-          documentation = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          }),
           completion = cmp.config.window.bordered({
-            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+            winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
           }),
         },
         formatting = {
+          fields = { "kind", "abbr", "menu" },
           format = lspkind.cmp_format({
             mode = "symbol", -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
