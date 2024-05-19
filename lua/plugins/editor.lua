@@ -33,6 +33,13 @@ return {
           vim.cmd("MarkdownPreviewToggle")
         end,
       },
+      {
+        "*cp",
+        desc = "Install Markdown Preview",
+        function()
+          vim.fn["mkdp#util#install"]()
+        end,
+      },
     },
   },
   {
@@ -61,6 +68,22 @@ return {
       require("transparent").clear_prefix("WhichKey")
       require("transparent").clear_prefix("toggleterm")
     end,
+    keys = {
+      {
+        "*te",
+        desc = "Enable Transparent Background",
+        function()
+          vim.cmd("TransparentEnable")
+        end,
+      },
+      {
+        "*td",
+        desc = "Disable Transparent Background",
+        function()
+          vim.cmd("TransparentDisable")
+        end,
+      },
+    },
   },
   {
     enabled = false,
