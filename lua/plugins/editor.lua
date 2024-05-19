@@ -59,7 +59,6 @@ return {
       require("transparent").clear_prefix("NeoTree")
       require("transparent").clear_prefix("BufferLine")
       require("transparent").clear_prefix("WhichKey")
-      require("transparent").clear_prefix("Telescope")
       require("transparent").clear_prefix("toggleterm")
     end,
   },
