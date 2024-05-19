@@ -8,7 +8,7 @@ return {
         position = "bottom", -- bottom, top
         margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
         padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 100, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+        winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
         zindex = 1000, -- positive value to position WhichKey above other floating windows.
       },
       icons = {
@@ -53,7 +53,16 @@ return {
     },
   },
   { "mg979/vim-visual-multi", branch = "master" },
-  { "xiyaowong/transparent.nvim" },
+  {
+    "xiyaowong/transparent.nvim",
+    config = function()
+      require("transparent").clear_prefix("NeoTree")
+      require("transparent").clear_prefix("BufferLine")
+      require("transparent").clear_prefix("WhichKey")
+      require("transparent").clear_prefix("Telescope")
+      require("transparent").clear_prefix("toggleterm")
+    end,
+  },
   {
     enabled = false,
     "folke/flash.nvim",
