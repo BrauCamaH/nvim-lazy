@@ -233,7 +233,6 @@ return {
         mappings = {
           n = {},
         },
-        e,
       })
       opts.pickers = {
         diagnostics = {
