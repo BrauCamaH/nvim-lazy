@@ -143,6 +143,7 @@ return {
                 "sass",
                 "scss",
                 "pug",
+                "heex",
                 "typescriptreact",
               },
               -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
