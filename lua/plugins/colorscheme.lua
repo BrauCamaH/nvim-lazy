@@ -1,12 +1,14 @@
 return {
   {
-    "oxfist/night-owl.nvim",
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
     lazy = false,
   },
+
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "night-owl",
+      colorscheme = "nightfly",
     },
   },
 }
