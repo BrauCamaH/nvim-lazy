@@ -9,12 +9,4 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = "harpoon",
-  callback = function()
-    vim.opt.cursorline = true
-    vim.opt.winblend = 100
-  end,
-})
-
 vim.api.nvim_set_hl(0, "CmpItemAbbr", { fg = "#82aaff", bg = "NONE" })
