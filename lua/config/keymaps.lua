@@ -13,9 +13,4 @@ local keymap = vim.keymap
 keymap.set("n", "<Leader>o", "o<Esc>^Da")
 keymap.set("n", "<Leader>O", "O<Esc>^Da")
 
-vim.keymap.set("n", "<leader>ww", ":w <CR>")
-vim.keymap.set("n", "<leader>qq", ":q <CR>")
-
--- Split window
-keymap.set("n", "ss", ":split<Return>")
-keymap.set("n", "sv", ":vsplit<Return>")
+vim.keymap.set("n", "<leader>ww", ":w <CR>", { desc = "Save file" })
