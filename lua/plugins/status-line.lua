@@ -15,6 +15,7 @@ return {
           "%=",
           { "filename", path = 1 },
         },
+        lualine_y = {},
         lualine_z = {
           { "location", separator = { right = "" }, left_padding = 2 },
         },
