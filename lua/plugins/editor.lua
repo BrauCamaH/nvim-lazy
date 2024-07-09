@@ -96,7 +96,6 @@ return {
       },
     },
   },
-
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -184,6 +183,7 @@ return {
             grouped = true,
             previewer = false,
             initial_mode = "normal",
+            layout_strategy = "vertical",
             layout_config = { height = 40 },
           })
         end,
@@ -210,8 +210,8 @@ return {
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
         wrap_results = true,
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
+        layout_strategy = "flex",
+        layout_config = { prompt_position = "top", flex = { width = 0.9 } },
         sorting_strategy = "ascending",
         winblend = 0,
         mappings = {
