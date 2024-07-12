@@ -20,14 +20,20 @@ return {
         },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+
           if filename == "" then
             filename = "[No Name]"
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
 
+          if vim.bo[props.buf].modified then
+            filename = "[*]" .. filename
+            ft_color = colors.white
+          end
+
           return {
             { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
-            { filename .. " ", guifg = colors.white, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { filename .. " ", guifg = ft_color, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
           }
         end,
       })
