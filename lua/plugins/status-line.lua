@@ -17,7 +17,7 @@ return {
         },
         lualine_y = {},
         lualine_z = {
-          { "location", separator = { right = "" }, left_padding = 2 },
+          { "filetype", separator = { right = "" }, left_padding = 2 },
         },
       },
     },
