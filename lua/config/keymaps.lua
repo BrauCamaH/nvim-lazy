@@ -15,3 +15,4 @@ keymap.set("n", "<Leader>O", "O<Esc>^Da")
 
 vim.keymap.set("n", "<leader>ww", ":w <CR>", { desc = "Save Buffer => :w" })
 vim.keymap.set("n", "<leader>qq", ":q <CR>", { desc = "Quit Buffer => :q" })
+vim.keymap.set("n", "<leader>qm", ":delm! | delm A-Z0-9 <CR>", { desc = "Clear Marks => :delm! | delm A-Z0-9" })
