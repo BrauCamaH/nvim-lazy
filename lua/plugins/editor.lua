@@ -121,60 +121,7 @@ return {
     },
     keys = {
       {
-        ";f",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
-            no_ignore = false,
-            hidden = true,
-          })
-        end,
-        desc = "Lists files in your current working directory, respects .gitignore",
-      },
-      {
-        ";r",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.live_grep({
-            additional_args = { "--hidden" },
-          })
-        end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
-      },
-      {
-        ";/",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.buffers()
-        end,
-        desc = "Lists open buffers",
-      },
-      {
-        ";t",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.help_tags()
-        end,
-        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
-      },
-      {
-        ";;",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.resume()
-        end,
-        desc = "Resume the previous telescope picker",
-      },
-      {
-        ";e",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.diagnostics()
-        end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
-      },
-      {
-        ";s",
+        "<leader>s,",
         function()
           local builtin = require("telescope.builtin")
           builtin.treesitter()
@@ -182,7 +129,7 @@ return {
         desc = "Lists Function names, variables, from Treesitter",
       },
       {
-        "<leader>slf",
+        ",,",
         function()
           local telescope = require("telescope")
 
@@ -258,7 +205,7 @@ return {
             -- your custom insert mode mappings
             ["n"] = {
               -- your custom normal mode mappings
-              ["N"] = fb_actions.create,
+              ["n"] = fb_actions.create,
               ["h"] = fb_actions.goto_parent_dir,
               ["/"] = function()
                 vim.cmd("startinsert")

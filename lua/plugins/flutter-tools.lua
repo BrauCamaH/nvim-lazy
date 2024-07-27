@@ -11,7 +11,7 @@ return {
     },
     keys = {
       {
-        ";F",
+        "..",
         function()
           require("telescope").extensions.flutter.commands()
         end,
