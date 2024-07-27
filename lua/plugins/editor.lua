@@ -285,7 +285,7 @@ return {
       require("toggleterm").setup({})
       vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<cr>")
       vim.keymap.set("n", "<C-/>", ":ToggleTerm direction=horizontal size=30<cr>")
-      vim.keymap.set("n", "<leader>tt", ":ToggleTerm direction=horizontal size=30<cr>")
+      vim.keymap.set("n", "<leader>tt", ":ToggleTerm direction=horizontal size=10<cr>")
       vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical<cr>")
     end,
   },
