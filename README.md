@@ -12,7 +12,7 @@ I used for JavaScript/Typescript, Ruby, Go and Flutter development.
 - 🚀 Blazingly fast
 - 🧹 Clean settings for options, autocmds, and key maps
 - 📦 Comes with a wealth of plugins pre-configured and ready to use
-- 🎨 Night Owl as theme
+- 🎨 [Nighfly](https://github.com/bluz71/vim-nightfly-colors) as theme
 
 ## ⚡️ Requirements
 
