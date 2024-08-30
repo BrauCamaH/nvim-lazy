@@ -29,6 +29,11 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     config = function()
       require("render-markdown").setup({
+        code = {
+          width = "block",
+          border = "thin",
+          sign = false,
+        },
         heading = {
           -- Turn on / off heading icon & background rendering
           enabled = true,
@@ -41,16 +46,16 @@ return {
           -- Replaces '#+' of 'atx_h._marker'
           -- The number of '#' in the heading determines the 'level'
           -- The 'level' is used to index into the array using a cycle
-          icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          icons = { "| ", "|| ", "||| ", "|||| ", "||||| ", "|||||| " },
           -- Added to the sign column if enabled
           -- The 'level' is used to index into the array using a cycle
-          signs = { "󰫎 " },
+          signs = { "" },
           -- Width of the heading background:
           --  block: width of the heading text
           --  full:  full width of the window
           -- Can also be an array of the above values in which case the 'level' is used
           -- to index into the array using a clamp
-          width = "block",
+          width = "full",
           -- Amount of padding to add to the left of headings
           left_pad = 0,
           -- Amount of padding to add to the right of headings when width is 'block'
