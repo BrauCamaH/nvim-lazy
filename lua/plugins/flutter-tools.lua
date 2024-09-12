@@ -32,11 +32,6 @@ return {
     dependencies = {
       {
         "RobertBrunhage/flutter-riverpod-snippets",
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-      },
-      {
         "ArkrootHQ/freezed-snippets",
         config = function()
           require("luasnip.loaders.from_vscode").lazy_load()
