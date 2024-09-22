@@ -53,6 +53,15 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
+
+        -- Setup for vim-dadbod
+        cmp.setup.filetype({ "sql" }, {
+          sources = {
+            { name = "vim-dadbod-completion" },
+            { name = "buffer" },
+          },
+        }),
+
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
