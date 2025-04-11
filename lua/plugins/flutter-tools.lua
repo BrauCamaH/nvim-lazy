@@ -3,7 +3,7 @@ return {
     "reisub0/hot-reload.vim",
   },
   {
-    "akinsho/flutter-tools.nvim",
+    "nvim-flutter/flutter-tools.nvim",
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -49,7 +49,7 @@ return {
           enabled = false, -- set to false to disable
         },
         dev_log = {
-          enabled = false,
+          enabled = true,
           filter = nil, -- optional callback to filter the log
           -- takes a log_line as string argument; returns a boolean or nil;
           -- the log_line is only added to the output if the function returns true
@@ -83,6 +83,7 @@ return {
             enableSnippets = true,
             updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
           },
+          -- on_attach = function(client, bufnr) end,
         },
         debugger = {
           enabled = false,
