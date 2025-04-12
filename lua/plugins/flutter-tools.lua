@@ -66,6 +66,18 @@ return {
           auto_open = false, -- if true this will open the outline automatically when it is first populated
         },
         lsp = {
+          on_attach = function(client, bufnr)
+            -- Enable LSP format capability
+            client.server_capabilities.documentFormattingProvider = true
+
+            -- Optional: format on save
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ async = true })
+              end,
+            })
+          end,
           color = { -- show the derived colours for dart variables
             enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
             background = false, -- highlight the background
