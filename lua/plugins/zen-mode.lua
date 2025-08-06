@@ -14,48 +14,58 @@ return {
   },
   {
     "folke/zen-mode.nvim",
+    dependencies = {
+      "folke/twilight.nvim",
+      "preservim/vim-pencil",
+    },
+    ft = { "markdown", "text" }, -- optional: limit to filetypes
     config = function()
       require("zen-mode").setup({
         window = {
           backdrop = 0.95,
-          width = 120, -- width of the Zen window
-          height = 1, -- height of the Zen window
+          width = 120,
+          height = 1,
           options = {
-            signcolumn = "no", -- disable signcolumn
-            number = false, -- disable number column
-            relativenumber = false, -- disable relative numbers
-            -- cursorline = false, -- disable cursorline
-            -- cursorcolumn = false, -- disable cursor column
-            -- foldcolumn = "0", -- disable fold column
-            -- list = false, -- disable whitespace characters
+            signcolumn = "no",
+            number = false,
+            relativenumber = false,
+            wrap = true,
+            linebreak = true,
           },
         },
         plugins = {
-          -- disable some global vim options (vim.o...)
           options = {
             enabled = true,
-            ruler = true, -- disables the ruler text in the cmd line area
-            showcmd = false, -- disables the command in the last line of the screen
-            -- you may turn on/off statusline in zen mode by setting 'laststatus'
-            -- statusline will be shown only if 'laststatus' == 3
-            laststatus = 0, -- turn off the statusline in zen mode
+            ruler = true,
+            showcmd = false,
+            laststatus = 0,
           },
-          twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-          gitsigns = { enabled = false }, -- disables git signs
-          tmux = { enabled = true }, -- disables the tmux statusline
+          twilight = { enabled = true },
+          gitsigns = { enabled = false },
+          tmux = { enabled = true },
           wezterm = {
             enabled = true,
-            font = "+20", -- (10% increase per step)
+            font = "+20",
           },
         },
+      })
+
+      -- Force wrap and linebreak after ZenMode enters
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "ZenModeEnter",
+        callback = function()
+          vim.opt.wrap = true
+          vim.opt.linebreak = true
+        end,
       })
     end,
     keys = {
       {
         "<leader>z",
-        desc = "Toggle ZenMode",
+        desc = "Toggle Zen Mode with Pencil",
         function()
-          vim.cmd("ZenMode | Pencil")
+          vim.cmd("ZenMode")
+          vim.cmd("PencilSoft") -- soft wrap mode for writing
         end,
       },
     },
