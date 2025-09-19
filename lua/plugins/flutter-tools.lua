@@ -26,19 +26,25 @@ return {
           end
 
           table.sort(flutter_cmds)
-
           fzf.fzf_exec(flutter_cmds, {
-            prompt = "Flutter> ",
+            prompt = " Flutter > ",
             winopts = {
-              height = 0.6, -- 60% of screen
-              width = 0.5, -- 50% of screen
-              row = 0.5, -- centered vertically
-              col = 0.5, -- centered horizontally
-              border = "rounded", -- nice rounded border
+              height = 0.40, -- similar to LazyVim
+              width = 0.30,
+              row = 0.5,
+              col = 0.5,
+              border = "rounded",
+              backdrop = 100, -- dim background
+              hl = {
+                border = "FloatBorder",
+                cursor = "Cursor",
+                normal = "Normal",
+              },
             },
             fzf_opts = {
-              ["--layout"] = "reverse-list",
+              ["--layout"] = "reverse",
               ["--info"] = "inline",
+              ["--prompt"] = " Flutter > ",
             },
             actions = {
               ["default"] = function(selected)
