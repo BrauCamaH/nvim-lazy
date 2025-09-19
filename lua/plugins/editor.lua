@@ -111,47 +111,6 @@ return {
       },
     },
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
-      {
-        "<leader>s,",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.treesitter()
-        end,
-        desc = "Lists Function names, variables, from Treesitter",
-      },
-    },
-    config = function(_, opts)
-      local telescope = require("telescope")
-
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-        wrap_results = true,
-        layout_strategy = "flex",
-        layout_config = { prompt_position = "top", flex = { width = 0.9 } },
-        sorting_strategy = "ascending",
-        winblend = 0,
-        mappings = {
-          n = {},
-        },
-      })
-      opts.pickers = {
-        diagnostics = {
-          theme = "ivy",
-          initial_mode = "normal",
-          layout_config = {
-            preview_cutoff = 9999,
-          },
-        },
-      }
-      telescope.setup(opts)
-    end,
-  },
   -- Incremental rename
   {
     "smjonas/inc-rename.nvim",

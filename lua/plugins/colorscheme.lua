@@ -4,7 +4,6 @@ return {
     name = "nightfly",
     lazy = false,
   },
-
   {
     "LazyVim/LazyVim",
     opts = {
