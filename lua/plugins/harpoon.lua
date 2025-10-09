@@ -1,17 +1,7 @@
 return {
   "theprimeagen/harpoon",
   branch = "harpoon2",
-  config = function()
-    require("telescope").load_extension("harpoon")
-  end,
   keys = {
-    {
-      "<leader>H",
-      function()
-        require("telescope").extensions.harpoon.marks()
-      end,
-      desc = "harpoon file telescope",
-    },
     {
       "<leader>h",
       function()
