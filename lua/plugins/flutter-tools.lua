@@ -8,7 +8,8 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim",
-      "ibhagwan/fzf-lua", -- fzf-lua
+      "ibhagwan/fzf-lua",
+      "mfussenegger/nvim-dap",
     },
     keys = {
       {
@@ -16,9 +17,9 @@ return {
         function()
           local fzf = require("fzf-lua")
 
-          -- Get all commands and filter only Flutter*
           local cmds = vim.api.nvim_get_commands({})
           local flutter_cmds = {}
+
           for name, _ in pairs(cmds) do
             if name:match("^Flutter") then
               table.insert(flutter_cmds, name)
@@ -26,25 +27,20 @@ return {
           end
 
           table.sort(flutter_cmds)
+
           fzf.fzf_exec(flutter_cmds, {
             prompt = " Flutter > ",
             winopts = {
-              height = 0.40, -- similar to LazyVim
+              height = 0.40,
               width = 0.30,
               row = 0.5,
               col = 0.5,
               border = "rounded",
-              backdrop = 100, -- dim background
-              hl = {
-                border = "FloatBorder",
-                cursor = "Cursor",
-                normal = "Normal",
-              },
+              backdrop = 100,
             },
             fzf_opts = {
               ["--layout"] = "reverse",
               ["--info"] = "inline",
-              ["--prompt"] = " Flutter > ",
             },
             actions = {
               ["default"] = function(selected)
@@ -55,9 +51,10 @@ return {
             },
           })
         end,
-        desc = "Flutter Commands (fzf-lua autodetect, nice UI)",
+        desc = "Flutter Commands (fzf-lua)",
       },
     },
+
     config = function()
       require("flutter-tools").setup({
         decorations = {
@@ -67,46 +64,47 @@ return {
             project_config = true,
           },
         },
+
         root_patterns = { ".git", "pubspec.yaml" },
         fvm = false,
+
         widget_guides = { enabled = true },
-        closing_tags = {
-          highlight = "ErrorMsg",
-          prefix = ">",
-          priority = 10,
-          enabled = false,
-        },
+
         dev_log = {
           enabled = true,
           notify_errors = false,
           open_cmd = "15split",
           focus_on_open = true,
         },
+
         dev_tools = {
           autostart = true,
           auto_open_browser = false,
         },
+
         outline = {
           open_cmd = "30vnew",
           auto_open = false,
         },
+
         lsp = {
           on_attach = function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = true
+
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ async = true })
+                vim.lsp.buf.format({ async = false })
               end,
             })
           end,
+
           color = {
             enabled = true,
-            background = false,
-            foreground = false,
             virtual_text = true,
             virtual_text_str = "●",
           },
+
           settings = {
             showTodos = true,
             completeFunctionCalls = true,
@@ -115,11 +113,24 @@ return {
             updateImportsOnRename = true,
           },
         },
+
         debugger = {
           enabled = false,
+          run_via_dap = true,
           register_configurations = function(_)
-            require("dap").configurations.dart = {}
-            require("dap.ext.vscode").load_launchjs()
+            local dap = require("dap")
+
+            dap.configurations.dart = {
+              {
+                type = "dart",
+                request = "launch",
+                name = "Launch Flutter",
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
+              },
+            }
+
+            pcall(require("dap.ext.vscode").load_launchjs)
           end,
         },
       })
@@ -128,13 +139,11 @@ return {
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
-      {
-        "RobertBrunhage/flutter-riverpod-snippets",
-        "ArkrootHQ/freezed-snippets",
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-      },
+      "RobertBrunhage/flutter-riverpod-snippets",
+      "ArkrootHQ/freezed-snippets",
     },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
   },
 }
